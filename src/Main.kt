@@ -2,20 +2,25 @@ import java.util.*
 
 fun main() {
     val graph = mutableMapOf<Int, List<Int>>()
-    print("Колличество вершин: ")
-    val count = readln().toInt()
-    for (i in 1..count) {
-        print("Смежные вершины для вершины $i: ")
-        val input = readln()
-        if (input.isNotEmpty())
-            graph[i] = input.split(" ").map { it.toInt() }
+    //ввод данных пользователем и обработка ошибок
+    try {
+        print("Колличество вершин: ")
+        val count = readln().toInt()
+        for (i in 1..count) {
+            print("Смежные вершины для вершины $i: ")
+            val input = readln()
+            if (input.isNotEmpty())
+                graph[i] = input.split(" ").map { it.toInt() }
+        }
+        print("Стартовая вершина: ")
+        val start = readln().toInt()
+        print("Конечная вершина: ")
+        val end = readln().toInt()
+        println(dfs(graph, start, end).toString())
     }
-    print("Стартовая вершина: ")
-    val start = readln().toInt()
-    print("Конечная вершина: ")
-    val end = readln().toInt()
-
-    println(dfs(graph, start, end).toString())
+    catch (e : Exception) {
+        print("Неверный формат данных")
+    }
 }
 
 fun dfs(graph: Map<Int, List<Int>>, start: Int, end: Int): Int {
