@@ -23,7 +23,6 @@ fun main() {
     }
 }
 
-
 // функция для обхода графа
 fun dfs(graph: Map<Int, List<Int>>, start: Int, end: Int): Int {
     val visited = mutableSetOf<Int>()
