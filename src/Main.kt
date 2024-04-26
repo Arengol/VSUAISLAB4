@@ -12,27 +12,34 @@ fun main() {
     }
     print("Стартовая вершина: ")
     val start = readln().toInt()
-    println(dfs(graph, start).toString())
+    print("Конечная вершина: ")
+    val end = readln().toInt()
+
+    println(dfs(graph, start, end).toString())
 }
 
-fun dfs(graph: Map<Int, List<Int>>, start: Int): List<Int> {
+fun dfs(graph: Map<Int, List<Int>>, start: Int, end: Int): Int {
     val visited = mutableSetOf<Int>()
-    val stack = Stack<Int>()
-    val longestPath = mutableListOf<Int>()
+    val stack = ArrayDeque<Int>()
+    var pathLength = 0
 
-    stack.add(start)
+    stack.push(start)
 
     while (stack.isNotEmpty()) {
         val current = stack.pop()
         visited.add(current)
-        longestPath.add(current)
+
+        if (current == end) {
+            return pathLength
+        }
 
         for (neighbor in graph[current] ?: emptyList()) {
             if (!visited.contains(neighbor)) {
                 stack.push(neighbor)
+                pathLength++
             }
         }
     }
 
-    return longestPath
+    return -1
 }
