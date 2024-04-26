@@ -2,6 +2,7 @@ import java.util.*
 
 fun main() {
     val graph = mutableMapOf<Int, List<Int>>()
+    //ввод данных пользователем и обработка ошибок
     try {
         print("Колличество вершин: ")
         val count = readln().toInt()
