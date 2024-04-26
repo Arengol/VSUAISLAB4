@@ -23,6 +23,7 @@ fun main() {
     }
 }
 
+// my function to deep graph
 fun dfs(graph: Map<Int, List<Int>>, start: Int, end: Int): Int {
     val visited = mutableSetOf<Int>()
     val stack = ArrayDeque<Int>()
